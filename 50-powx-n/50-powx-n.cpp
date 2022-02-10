@@ -20,10 +20,6 @@ public:
                 num=num/2;
             }
         }
-        if(n<0)
-        {
-            return 1.0/ans;
-        }
-        return ans;
+        return (n<0)? 1.0/ans:ans;
     }
 };
