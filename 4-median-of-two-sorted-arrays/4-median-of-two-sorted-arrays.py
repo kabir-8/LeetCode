@@ -8,6 +8,6 @@ class Solution:
         n=len(a)
         a.sort()
         mid = len(a)//2
-        res = (a[mid] +a[~mid]) / 2
-        return res
+        median= (a[mid] +a[~mid]) / 2
+        return median
         
