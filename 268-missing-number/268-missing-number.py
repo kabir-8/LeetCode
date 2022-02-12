@@ -1,6 +1,6 @@
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
-        l=len(nums)
+        n=len(nums)
         x=sum(nums)
-        s=(l*(l+1)/2)
+        s=(n*(n+1)/2)
         return int(s-x)
