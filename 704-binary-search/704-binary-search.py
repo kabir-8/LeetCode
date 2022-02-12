@@ -1,26 +1,18 @@
-class Solution {
-public:
-    int search(vector<int>& nums, int target) {
-        int s=nums.size();
-        int mid=s/2;
-        int start=0;
-        int end=s-1;
-        while(start<=end)
-        {
-            mid=(start+end)/2;
-            if(nums[mid]==target)
-            {
-                return mid;
-            }
-            else if(nums[mid]>target)
-            {
-                end=mid-1;
-            }
-            else
-            {
-                start=mid+1;
-            }
-        }
-        return -1;
-    }
-};
+class Solution:
+    def binarySearch(self, nums, left, right, target): 
+        if left > right: # not found condition 
+            return -1 
+        
+        mid = (right+left)//2 
+        
+        if nums[mid] == target: 
+            return mid 
+        elif target < nums[mid]: 
+            return self.binarySearch(nums, left, mid-1, target)
+        else: 
+            return self.binarySearch(nums, mid+1, right, target)
+        
+    
+    
+    def search(self, nums: List[int], target: int) -> int:
+        return self.binarySearch(nums, 0, len(nums)-1, target)    
