@@ -23,12 +23,11 @@ bool palindrome(int arr[], int n)
 bool isPalindrome(struct ListNode* head){
     int arr[500000];
     int i=0;
-    while(head!=NULL)
+    do
     {
-        arr[i]=head->val;
-        i++;
+        arr[i++]=head->val;
         head=head->next;
-    }
+    }  while(head!=NULL);
     if(palindrome(arr,i))
     {
         return true;
