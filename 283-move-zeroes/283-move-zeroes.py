@@ -3,9 +3,10 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        x=nums.count(0)
+        x=len(nums)
         for i in range(x):
-            nums.remove(0)
-            nums.append(0)
+            if 0 in nums:
+                nums.remove(0)
+                nums.append(0)
                 
         
