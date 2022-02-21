@@ -7,10 +7,10 @@ bool hasCycle(struct ListNode *head) {
     {
         prev=temp;
         temp=temp->next;
-        prev->val=-9;
+        prev->val=INT_MIN;
         prev->next=NULL;
     }
-    if(temp->val==-9)
+    if(temp->val==INT_MIN)
     {
         return true;
     }
