@@ -1,34 +1,25 @@
 class Solution
 {
 public:
-int largestRectangleArea(vector<int>& heights) {
-        int len = heights.size();
-        vector<int> right(len, len);
-        stack<int> monoIncStackRight;
-        for (int i = 0; i < len; i++) {
-            while (!monoIncStackRight.empty() && heights[i] < heights[monoIncStackRight.top()]) {
-                right[monoIncStackRight.top()] = i;
-                monoIncStackRight.pop();
+    int largestRectangleArea(vector<int>& heights) {
+        stack<int> st;
+        int        N = heights.size();
+        
+        if (N == 0)
+            return 0;
+        
+        st.push(0);
+        int maxArea = heights[0];
+        int i = 0, length, width;
+        for (i = 1; i <= N; ++i) {
+            while(!st.empty() && 
+                  (i == N || heights[st.top()] > heights[i])) {
+                length = heights[st.top()]; st.pop();
+                width = st.empty() ? i : i - st.top() - 1;
+                maxArea = max(maxArea, length * width);
             }
-            monoIncStackRight.push(i);
+            st.push(i);
         }
-        
-        vector<int> left(len, -1);
-        stack<int> monoIncStackLeft;
-        for (int i = len - 1; i >= 0; i--) {
-            while (!monoIncStackLeft.empty() && heights[i] < heights[monoIncStackLeft.top()]) {
-                left[monoIncStackLeft.top()] = i;
-                monoIncStackLeft.pop();
-            }
-            monoIncStackLeft.push(i);
-        }
-        
-        int result = 0;
-        for (int i = 0; i < len; i++) {
-            int area = (right[i] - left[i] - 1) * heights[i];
-            result = max(area, result);
-        }
-        
-        return result;
+        return maxArea;
     }
 };
