@@ -7,7 +7,6 @@ public:
         stack<int> st;
         for (int i = arr.size() - 1; i >= 0; i--)
         {
-            // keep popping untill you found element smaller than current value 
             while (!st.empty() and arr[st.top()] >= arr[i])
             {
                 st.pop();
@@ -23,7 +22,6 @@ public:
         stack<int> st;
         for (int i = 0; i < arr.size(); i++)
         {
-            // keep popping untill you found element smaller than current value
             while (!st.empty() and arr[st.top()] >= arr[i])
             {
                 st.pop();
